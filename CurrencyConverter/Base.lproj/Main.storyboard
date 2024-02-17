@@ -238,7 +238,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Pfo-h9-nzV" firstAttribute="centerX" secondItem="WrG-Jn-t3E" secondAttribute="centerX" id="4kL-X1-TP6"/>
-                                    <constraint firstItem="Pfo-h9-nzV" firstAttribute="top" secondItem="5vh-5O-wUe" secondAttribute="bottom" constant="30" id="hIl-4X-UiD"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount in USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHv-hj-Qir">
