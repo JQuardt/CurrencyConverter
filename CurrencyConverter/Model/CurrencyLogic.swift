@@ -20,6 +20,7 @@ struct CurrencyLogic {
     
     enum TextError : Error {
         case TextInvalid(reason: String)
+        case NoValue(reason: String)
     }
     
     mutating func convert(_ value : Int) {
@@ -44,12 +45,17 @@ struct CurrencyLogic {
         } catch TextError.TextInvalid(let reason) {
             //If invalid, return error string.
             return (reason, false)
+        } catch TextError.NoValue(let reason) {
+            return (reason, false)
         } catch {
             return ("Error found", false)
         }
     }
     
     func checkValue(_ text : String) throws {
+        if text.isEmpty {
+            throw TextError.NoValue(reason: "Please type a value.")
+        }
         let integers: Set<Character> = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
         for char in text {
             if integers.contains(char) {
@@ -70,19 +76,6 @@ struct CurrencyLogic {
     func getConversions() -> Array<Int> {
         return [euro, pound, ausDollar, canDollar]
     }
-    
-    //    mutating func setSwitch(_ switchValue : Bool, _ switchType : String) {
-    //        switch switchType {
-    //        case "euro":
-    //            euroSwitch = switchValue
-    //        case "pound":
-    //            poundSwitch = switchValue
-    //        case "aus":
-    //            ausDollarSwitch = switchValue
-    //        default:
-    //            canDollarSwitch = switchValue
-    //        }
-    //    }
     
     mutating func setEuroSwitch(_ switchValue : Bool) {
         if switchValue {
